@@ -1,146 +1,109 @@
-✅ Framework Overview
-Language: Java
+🧪 UI Automation Framework – SauceDemo
+This repository contains a robust UI Test Automation Framework built in Java using Selenium WebDriver, Cucumber, and TestNG, designed to automate end-to-end test scenarios for SauceDemo.
 
-Testing Framework: Cucumber + JUnit/TestNG
+📌 Features
+✅ Java-based test framework
 
-Automation Tool: Selenium WebDriver
+✅ Selenium WebDriver integration
 
-Design Pattern: Page Object Model (POM)
+✅ Cucumber BDD with Gherkin
 
-Reporting: Allure Reports
+✅ Cross-browser support (Chrome and Firefox)
 
-Parallel Execution: TestNG or JUnit 5
+✅ Configurable settings via config.properties (URL, browser)
 
-Data-Driven Testing: CSV/Excel/JSON
+✅ Data-driven testing with external file (CSV/Excel/JSON)
 
-Browser Support: Chrome, Firefox (from config)
+✅ Parallel test execution using TestNG
 
-Source Control: Git (GitHub repo)
+✅ Page Object Model (POM) design pattern
 
-📁 Project Structure
+✅ Allure Reporting for test results
 
-bash
-Copy
-Edit
-src
-├── main
-│   └── java
-│       └── pages/                # Page Object classes
-│       └── utils/                # Utility classes (e.g., config reader)
-├── test
-│   └── java
-│       └── stepDefinitions/      # Step definitions
-│       └── runners/              # Test runners
-│       └── features/             # Gherkin feature files
-config/
-│   └── config.properties         # URL, browser type
-testdata/
-│   └── loginTestData.csv         # 4 sets of credentials
-README.md
-pom.xml
-🛠️ Implementation Highlights
-1. Cucumber Integration
-   Use @CucumberOptions in runner class to link to .feature files.
+✅ GitHub integrated project with version control
 
-Example step definitions implement login, cart, and checkout flow.
+✅ Demo video of test execution embedded in Allure report
 
-2. Browser Support via Config
-   config.properties:
+🔍 Test Scenarios
+Scenario 1 – Invalid Login
+Visit SauceDemo
+
+Attempt login using invalid credentials (4 data sets)
+
+Verify appropriate error messages are displayed
+
+Scenario 2 – End-to-End Valid Flow
+Login with valid credentials:
+
+Username: standard_user
+
+Password: secret_sauce
+
+Verify navigation to the Products page
+
+Add the two most expensive products to the cart
+
+Navigate to Cart and validate added items
+
+Proceed to Checkout and fill form
+
+Verify:
+
+Navigation to Overview page
+
+Total item amount (before taxes)
+
+Correct final URL
+
+Click Finish and verify:
+
+"Thank You" message
+
+Order dispatch message
+
+⚙️ How to Run
+Clone the repository
+
+Set up Maven dependencies (mvn clean install)
+
+Configure config.properties:
 
 properties
 Copy
 Edit
 browser=chrome
-url=https://www.saucedemo.com/
-DriverFactory initializes WebDriver based on config.
-
-3. Parallel Execution
-   TestNG: use testng.xml with parallel="tests" and thread-count.
-
-JUnit 5: use @Execution(CONCURRENT) and proper config.
-
-4. Page Object Model (POM)
-   Create classes like LoginPage.java, ProductPage.java, CartPage.java, CheckoutPage.java, each encapsulating page elements and methods.
-
-5. Data-Driven Test
-   Load CSV/Excel using Apache Commons CSV or Jackson (for JSON).
-
-Cucumber ScenarioOutline + Examples or use @DataProvider with TestNG.
-
-6. Allure Reporting
-   Add Allure dependencies to pom.xml:
-
-xml
-Copy
-Edit
-<dependency>
-<groupId>io.qameta.allure</groupId>
-<artifactId>allure-cucumber7-jvm</artifactId>
-<version>2.24.0</version>
-</dependency>
-Add Allure annotations to step definitions.
-
-Generate report with:
-
-bash
-Copy
-Edit
-mvn clean test
-mvn allure:serve
-7. README.md
-   Includes:
-
-Setup instructions
-
-How to run tests
-
-How to generate reports
-
-Browser config usage
-
-Parallel execution guide
-
-8. ## 🧪 How to Run the Tests
-
-**Clone the repository**:
-   ```bash
-   git clone https://github.com/MahmoudTurkey/demoblaze-automation.git
-   cd demoblaze-automation
-Install dependencies:
-
-bash
-Copy
-Edit
-mvn clean install
+url=https://www.saucedemo.com
 Run tests:
 
 bash
 Copy
 Edit
 mvn test
-Generate Allure report:
+Generate Allure Report:
 
 bash
 Copy
 Edit
-mvn allure:report
-mvn allure:serve
+allure serve target/allure-results
+📊 Reporting
+Allure Report is used for visual test reports
 
-📹 Demo
+Embedded test execution demo video inside Allure report
 
-You can find a demo video in the Demo Video folder.
+📽️ Demo Video
+🎥 Watch the test execution demo (replace with actual link)
 
-📄 Reporting
-
-All test executions are logged and visually reported using Allure Reports. After running the tests, open the report using:
-
+📁 Project Structure
 bash
 Copy
 Edit
-mvn allure:serve
-
-✍️ Authors
-
-MahmoudTurkey - Test Automation Engineer
-
-Contact: mahmoudtorki79@gmail.com
+src/
+├── main/
+│   └── java/
+│       └── pages/           # Page Object classes
+│       └── utils/           # Driver setup, config reader
+├── test/
+│   └── java/
+│       └── stepdefinitions/ # Cucumber step defs
+│       └── runners/         # Test runners
+│       └── features/        # Gherkin feature files
