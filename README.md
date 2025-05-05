@@ -1,4 +1,5 @@
 🧪 UI Automation Framework – SauceDemo
+
 This repository contains a robust UI Test Automation Framework built in Java using Selenium WebDriver, Cucumber, and TestNG, designed to automate end-to-end test scenarios for SauceDemo.
 
 📌 Features
